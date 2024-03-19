@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-import { LSBuilder } from "../LSBuilder.js";
+import { LSBuilder } from "../src/LSBuilder.js";
 new LSBuilder();

@@ -1,6 +1,12 @@
+import fs from "fs";
 import path from "path";
 
 export class LSBuilderConfiguration {
+    /**
+     * @type {string}
+     */
+    title;
+
     /**
      * Output directory.
      * @type {string}
@@ -22,8 +28,9 @@ export class LSBuilderConfiguration {
     constructor() {
         const lsbuilderConfig1 = path.resolve(process.cwd(), "lsbuilder.json");
         const lsbuilderConfig2 = fs.readFileSync(lsbuilderConfig1, "utf8");
-        const { output, assetFiles, sectionFiles } = JSON.parse(lsbuilderConfig2);
+        const { title, output, assetFiles, sectionFiles } = JSON.parse(lsbuilderConfig2);
 
+        this.title = String(title);
         this.output = path.resolve(process.cwd(), String(output));
         this.assetFiles = assetFiles;
         this.sectionFiles = sectionFiles;

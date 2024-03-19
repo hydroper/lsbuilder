@@ -101,7 +101,7 @@ export class Section {
                 currentHeadingTagNumber = getHeadingTagNumber(DomUtils.getName(headingTitle));
                 if (currentHeadingTagNumber > previousHeadingTagNumber) {
                     for (let j = previousHeadingTagNumber; j < currentHeadingTagNumber; j++) {
-                        currentSectionNumber.push(1);
+                        currentSectionNumber.values.push(1);
                     }
                 } else {
                     for (let j = previousHeadingTagNumber; j-- > currentHeadingTagNumber;) {
