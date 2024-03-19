@@ -121,14 +121,22 @@ export class Section {
                 correctSubsectionList.push(section);
             }
 
-            if (currentHeadingTagNumber != 1) {
-                for (let i = currentHeadingTagNumber; i-- > 1;) {
+            if (currentHeadingTagNumber > 1) {
+                for (let i = currentHeadingTagNumber; i-- > 2;) {
                     currentSectionNumber.values.pop();
                 }
                 currentHeadingTagNumber = 1;
+            } else if (currentHeadingTagNumber == 1) {
+                currentSectionNumber.values.push(0);
             }
 
-            Section.processList(file.subsections, currentSectionNumber);
+            for (const section of Section.processList(file.subsections, currentSectionNumber)) {
+                if (result.length == 0) {
+                    console.error("Section \"" + section.title + "\" (" + section.number.toString() + ") must have a parent section.");
+                    process.exit(1);
+                }
+                result[result.length - 1].subsections.push(section);
+            }
 
             // Increment section number
             sectionNumber.increment();
