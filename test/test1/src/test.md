@@ -6,9 +6,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```
 for each (var object in list) {
-    object.perform()
+    object.perform();
 }
 ```
+
+| Name | Description |
+| ---- | ----------- |
+| \[\[*Ultra*\]\] | Ultra description |
 
 ## Test 1
 

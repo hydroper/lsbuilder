@@ -18,6 +18,10 @@
     --header-3: var(--header-2);
 
     --table-border: #000;
+    /*
     --table-header-background: #222;
     --table-header-foreground: #fff;
+    */
+    --table-header-background: #c0c0c0;
+    --table-header-foreground: #050505;
 }
