@@ -78,9 +78,6 @@ export class Section {
 
             // Build sections
             for (let i = 0; i < headingTitles.length; i++) {
-                // Track previous section number
-                let previousSectionNumber = currentSectionNumber.clone();
-
                 // Track previous heading tag number
                 let previousHeadingTagNumber = currentHeadingTagNumber;
 
@@ -104,7 +101,7 @@ export class Section {
                     for (let j = previousHeadingTagNumber; j < currentHeadingTagNumber; j++) {
                         currentSectionNumber.values.push(1);
                     }
-                } else {
+                } else if (currentHeadingTagNumber < previousHeadingTagNumber) {
                     for (let j = previousHeadingTagNumber; j-- > currentHeadingTagNumber;) {
                         currentSectionNumber.values.pop();
                     }

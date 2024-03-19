@@ -72,12 +72,10 @@ export class LSBuilder {
             // No Math.clamp() here, so using ternary.
             const headingTagName = section.number.values.length == 1 ? "h1" : section.number.values.length == 2 ? "h2" : "h3";
 
-            contentOutput.push("<" + headingTagName + ">" + section.number.toString() + " " + section.title + "</" + headingTagName + ">\n");
+            contentOutput.push("<" + headingTagName + ">" + section.number.toString() + " " + section.title + "</" + headingTagName + ">");
             contentOutput.push(section.content);
 
             this.generateSectionHTML(section.subsections, contentOutput);
         }
     }
 }
-
-new LSBuilder();
