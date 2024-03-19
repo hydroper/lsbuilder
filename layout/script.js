@@ -3,6 +3,6 @@
 
     toggleSidebarButton.addEventListener("click", _e => {
         const htmlElement = document.querySelector("html");
-        htmlElement.setAttribute("data-sidebar", (!Boolean(htmlElement.getAttribute("data-sidebar"))).toString());
+        htmlElement.setAttribute("data-sidebar", (!(htmlElement.getAttribute("data-sidebar") == "true")).toString());
     });
 })();

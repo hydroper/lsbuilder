@@ -196,9 +196,9 @@ html[data-sidebar="true"] #sidebar {
 
 #content {
     position: fixed;
-    left: 0;
     top: calc(var(--menubar-height) + 1rem);
     bottom: 0;
+    max-width: 80rem;
     padding: 1rem;
     overflow-x: hidden;
     overflow-y: scroll;
