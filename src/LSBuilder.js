@@ -45,12 +45,18 @@ export class LSBuilder {
 
         // Load layout
         const indexLayout = Handlebars.compile(fs.readFileSync(path.resolve(thisScriptDirectory, "../layout/index.hb"), "utf8"));
+        const scriptLayout = Handlebars.compile(fs.readFileSync(path.resolve(thisScriptDirectory, "../layout/script.js"), "utf8"));
 
         // Generate index.html
         fs.writeFileSync(path.resolve(this.lsbuilderConfig.output, "index.html"), indexLayout({
             title: this.lsbuilderConfig.title,
             sidebar: this.generateSidebar(sections),
             content: sectionHTML,
+        }));
+
+        // Generate script.js
+        fs.writeFileSync(path.resolve(this.lsbuilderConfig.output, "script.js"), scriptLayout({
+            /* ... */
         }));
 
         // Copy theme files

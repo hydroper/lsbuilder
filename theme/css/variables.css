@@ -1,6 +1,8 @@
 /* Globals */
 
 :root {
+    --menubar-height: 38px;
+
     --common-font: Arial MT, Arial, serif;
     --common-font-size: 0.84rem;
     --code-font: Courier New, monospace;
