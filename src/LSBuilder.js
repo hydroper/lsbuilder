@@ -71,7 +71,7 @@ export class LSBuilder {
     copyThemeFonts() {
         fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, "theme/fonts"), { recursive: true });
         const themeFiles = [];
-        const m = globSync(path.resolve(thisScriptDirectory, "theme/fonts/*"));
+        const m = globSync(path.resolve(thisScriptDirectory, "../theme/fonts/*"));
         themeFiles.push.apply(themeFiles, m);
         for (const themeFile of themeFiles) {
             fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, "theme/fonts", path.basename(themeFile)));
@@ -81,7 +81,7 @@ export class LSBuilder {
     copyThemeCSS() {
         fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, "theme/css"), { recursive: true });
         const themeFiles = [];
-        const m = globSync(path.resolve(thisScriptDirectory, "theme/css/*"));
+        const m = globSync(path.resolve(thisScriptDirectory, "../theme/css/*"));
         themeFiles.push.apply(themeFiles, m);
         for (const themeFile of themeFiles) {
             fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, "theme/css", path.basename(themeFile)));
