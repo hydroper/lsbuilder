@@ -35,7 +35,7 @@ export class LSBuilder {
 
         // Process sections
         const sectionFiles = SectionFile.parseList(this.lsbuilderConfig.sectionFiles);
-        const sections = Section.processList(sectionFiles, new SectionNumber([1]));
+        const sections = Section.processList(sectionFiles, new SectionNumber([0]));
         /**
          * @type {string[]}
          */

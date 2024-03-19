@@ -101,7 +101,7 @@ export class Section {
                     for (let j = previousHeadingTagNumber; j < currentHeadingTagNumber; j++) {
                         currentSectionNumber.values.push(1);
                     }
-                } else if (currentHeadingTagNumber < previousHeadingTagNumber) {
+                } else {
                     for (let j = previousHeadingTagNumber; j-- > currentHeadingTagNumber;) {
                         currentSectionNumber.values.pop();
                     }
@@ -112,20 +112,19 @@ export class Section {
                 const section = new Section(currentSectionNumber.clone(), DomUtils.innerText(headingTitle), content);
                 let correctSubsectionList = result;
                 for (let i = 1; i < currentHeadingTagNumber; i++) {
-                    assert(correctSubsectionList.length != 0, "Section \"" + section.title + "\" (" + section.number.toString() + ") must have a parent section.");
+                    if (correctSubsectionList.length == 0) {
+                        console.error("Section \"" + section.title + "\" (" + section.number.toString() + ") must have a parent section.");
+                        process.exit(1);
+                    }
                     correctSubsectionList = correctSubsectionList[correctSubsectionList.length - 1].subsections;
                 }
                 correctSubsectionList.push(section);
-
-                // Increment section number
-                currentSectionNumber.increment();
             }
 
             if (currentHeadingTagNumber != 1) {
                 for (let i = currentHeadingTagNumber; i-- > 1;) {
                     currentSectionNumber.values.pop();
                 }
-                currentSectionNumber.increment();
                 currentHeadingTagNumber = 1;
             }
 

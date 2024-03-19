@@ -8,7 +8,12 @@
     ],
     "sectionFiles": [
         {
-            "path": "src/test.md"
+            "path": "src/test.md",
+            "subsections": [
+                {
+                    "path": "src/test/subtest.md"
+                }
+            ]
         }
     ]
 }
