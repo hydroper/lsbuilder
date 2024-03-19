@@ -5,7 +5,7 @@ export class SectionNumber {
     values;
 
     /**
-     * @type {number[]}
+     * @param {number[]} values
      */
     constructor(values) {
         this.values = values;

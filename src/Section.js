@@ -45,15 +45,16 @@ export class Section {
 
     /**
      * @param {SectionFile[]} sectionFiles
-     * @param {SectionNumber} sectionNumberArgument
+     * @param {SectionNumber} sectionNumber
      * @returns {Section[]}
      */
-    static processList(sectionFiles, sectionNumberArgument) {
+    static processList(sectionFiles, sectionNumber) {
         /**
          * @type {Section[]}
          */
         const result = [];
-        const sectionNumber = sectionNumberArgument.clone();
+
+        sectionNumber = sectionNumber.clone();
 
         for (const file of sectionFiles) {
             const dom = htmlparser2.parseDocument(file.html);
@@ -122,6 +123,16 @@ export class Section {
                 // Increment section number
                 currentSectionNumber.increment();
             }
+
+            if (currentHeadingTagNumber != 1) {
+                for (let i = currentHeadingTagNumber; i-- > 1;) {
+                    currentSectionNumber.values.pop();
+                }
+                currentSectionNumber.increment();
+                currentHeadingTagNumber = 1;
+            }
+
+            Section.processList(file.subsections, currentSectionNumber);
 
             // Increment section number
             sectionNumber.increment();
