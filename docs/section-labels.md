@@ -1,10 +1,11 @@
 # Section labels
 
-Place the following text before a heading title to add a label to a section:
+Place the following tag before a heading title to add a label to the following section:
 
 ```md
-<?sectionLabel=x?>
-# Heading title
+<sectionLabel>sec-x</sectionLabel>
+
+# X
 ```
 
 The section can then be referred to as in the following snippet:

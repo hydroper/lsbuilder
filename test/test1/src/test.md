@@ -1,5 +1,3 @@
-<?sectionLabel=x?>
-
 # X
 
 X.

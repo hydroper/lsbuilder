@@ -48,7 +48,8 @@ export class Section {
     constructor(number, title, content) {
         this.number = number;
         this.title = title;
-        this.slug = getSlug(number.toString() + " " + title, { custom: ["."] });
+        // this.slug = getSlug("sec-" + number.toString() + " " + title, { custom: ["."] });
+        this.slug = "sec-" + number.toString();
         this.label = null;
         this.content = content;
         this.subsections = [];
@@ -96,17 +97,12 @@ export class Section {
 
                 // Detect label
                 let label = null;
-                let prevSibling = headingTitle.previousSibling;
-                while (prevSibling != null && [htmlparser2.ElementType.Directive, htmlparser2.ElementType.Text].indexOf(prevSibling.type) != -1) {
-                    if (prevSibling.type == htmlparser2.ElementType.Directive) {
-                        let text = prevSibling.data.trim();
-                        if (text.startsWith("?sectionLabel=")) {
-                            label = text.slice("?sectionLabel=".length);
-                            label = label.slice(0, label.length - 1);
-                            break;
-                        }
+                let prevSibling = DomUtils.prevElementSibling(headingTitle);
+                if (prevSibling != null && DomUtils.getName(prevSibling) == "p") {
+                    const e = DomUtils.getChildren(prevSibling);
+                    if (e.length != 0 && DomUtils.getName(e[0]) == "sectionlabel") {
+                        label = DomUtils.innerText(e[0]).trim();
                     }
-                    prevSibling = prevSibling.previousSibling;
                 }
 
                 // Delimit content
