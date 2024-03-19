@@ -1,4 +1,5 @@
 html, body {
+    overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -142,6 +143,8 @@ ol li:before {
     left: -0.3rem;
 }
 
+/* Menu bar */
+
 #menubar {
     position: fixed;
     top: 0;
@@ -152,6 +155,10 @@ ol li:before {
     justify-content: space-between;
     height: 38px;
     padding: 0.5rem;
+}
+
+html[data-sidebar="true"] #menubar {
+    left: var(--sidebar-width);
 }
 
 #menubar .left,
@@ -170,15 +177,33 @@ ol li:before {
     text-transform: uppercase;
 }
 
+/* Sidebar */
+
 #sidebar {
     position: fixed;
+    display: hidden;
+    width: var(--sidebar-width);
 }
+
+html[data-sidebar="true"] #sidebar {
+    display: flex;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* Content */
 
 #content {
     position: fixed;
+    left: 0;
     top: 38px;
     bottom: 0;
     padding: 1rem;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+html[data-sidebar="true"] #content {
+    left: var(--sidebar-width);
 }

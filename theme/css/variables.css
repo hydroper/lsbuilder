@@ -25,3 +25,19 @@
     --table-header-background: #c0c0c0;
     --table-header-foreground: #050505;
 }
+
+/* Portrait */
+
+@media (min-width: 320px) {
+    :root {
+        --sidebar-width: 280px;
+    }
+}
+
+/* Landscape */
+
+@media (min-width: 961px) {
+    :root {
+        --sidebar-width: 25rem;
+    }
+}
