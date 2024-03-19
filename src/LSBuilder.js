@@ -71,8 +71,10 @@ export class LSBuilder {
         for (const section of sections) {
             // No Math.clamp() here, so using ternary.
             const headingTagName = section.number.values.length == 1 ? "h1" : section.number.values.length == 2 ? "h2" : "h3";
+            const idAttribute = section.label == null ? "" : " id=\"" + section.label.replace(/"/g, "")  + "\"";
+            const headingTitle = "<" + headingTagName + idAttribute + ">" + section.number.toString() + " " + section.title + "</" + headingTagName + ">";
 
-            contentOutput.push("<" + headingTagName + ">" + section.number.toString() + " " + section.title + "</" + headingTagName + ">");
+            contentOutput.push("<div class=\"section-title\" href=\"" + section.slug + "\">" + headingTitle + "</div>");
             contentOutput.push(section.content);
 
             this.generateSectionHTML(section.subsections, contentOutput);

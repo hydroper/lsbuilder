@@ -4,6 +4,7 @@ import * as htmlparser2 from "htmlparser2";
 import { DomUtils } from "htmlparser2";
 import serializeDOM from "dom-serializer";
 import assert from "node:assert";
+import getSlug from "speakingurl";
 
 const headingTags = ["h1", "h2", "h3", "h4", "h5", "h6"];
 
@@ -20,6 +21,14 @@ export class Section {
      * @type {string}
      */
     title;
+    /**
+     * @type {string}
+     */
+    slug;
+    /**
+     * @type {string | null}
+     */
+    label;
     /**
      * HTML content.
      * @type {string}
@@ -39,6 +48,8 @@ export class Section {
     constructor(number, title, content) {
         this.number = number;
         this.title = title;
+        this.slug = getSlug(number.toString() + " " + title, { custom: ["."] });
+        this.label = null;
         this.content = content;
         this.subsections = [];
     }
@@ -83,6 +94,21 @@ export class Section {
 
                 const headingTitle = headingTitles[i];
 
+                // Detect label
+                let label = null;
+                let prevSibling = headingTitle.previousSibling;
+                while (prevSibling != null && [htmlparser2.ElementType.Directive, htmlparser2.ElementType.Text].indexOf(prevSibling.type) != -1) {
+                    if (prevSibling.type == htmlparser2.ElementType.Directive) {
+                        let text = prevSibling.data.trim();
+                        if (text.startsWith("?sectionLabel=")) {
+                            label = text.slice("?sectionLabel=".length);
+                            label = label.slice(0, label.length - 1);
+                            break;
+                        }
+                    }
+                    prevSibling = prevSibling.previousSibling;
+                }
+
                 // Delimit content
                 let domContent = null;
                 let nextHeadingTitle = i + 1 < headingTitles.length ? headingTitles[i + 1] : null;
@@ -110,6 +136,7 @@ export class Section {
 
                 // Contribute section
                 const section = new Section(currentSectionNumber.clone(), DomUtils.innerText(headingTitle), content);
+                section.label = label;
                 let correctSubsectionList = result;
                 for (let i = 1; i < currentHeadingTagNumber; i++) {
                     if (correctSubsectionList.length == 0) {

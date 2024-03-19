@@ -20,6 +20,7 @@
     "glob": "^10.3.10",
     "handlebars": "^4.7.8",
     "htmlparser2": "^9.1.0",
-    "markdown-it": "^14.1.0"
+    "markdown-it": "^14.1.0",
+    "speakingurl": "^14.0.1"
   }
 }
