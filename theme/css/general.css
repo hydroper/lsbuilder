@@ -85,7 +85,7 @@ h3 .sec-title-number {
 }
 
 table {
-    margin: 0 auto;
+    margin: 2rem auto;
     min-width: 25rem;
     border-collapse: collapse;
     border: 1px solid var(--table-border);
@@ -112,4 +112,14 @@ table tbody tr:nth-child(even) {
 }
 table tbody tr:nth-child(odd) {
     background: var(--background);
+}
+
+ol li {
+    position: relaive;
+    padding-left: 0.5rem;
+}
+
+ol li:before {
+    position: absolute;
+    left: -0.3rem;
 }
