@@ -10,6 +10,24 @@ html {
     font-size: var(--common-font-size);
 }
 
+button, button:hover, button:active {
+    background: none;
+    border: none;
+    opacity: 1;
+    color: var(--foreground);
+    font-family: var(--common-font);
+    font-size: var(--common-font-size);
+}
+
+button {
+    padding: 0;
+}
+
+button:focus {
+    border: none;
+    outline: none;
+}
+
 pre {
     background: var(--code-block-background);
     color: var(--code-block-foreground);
@@ -124,6 +142,43 @@ ol li:before {
     left: -0.3rem;
 }
 
+#menubar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 38px;
+    padding: 0.5rem;
+}
+
+#menubar .left,
+#menubar .right {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#menubar #toggleSidebar {
+    font-size: 1.5rem;
+}
+
+#menubar .title {
+    text-transform: uppercase;
+}
+
+#sidebar {
+    position: fixed;
+}
+
 #content {
+    position: fixed;
+    top: 38px;
+    bottom: 0;
     padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }

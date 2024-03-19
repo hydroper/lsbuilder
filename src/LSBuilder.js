@@ -49,6 +49,7 @@ export class LSBuilder {
         // Generate index.html
         fs.writeFileSync(path.resolve(this.lsbuilderConfig.output, "index.html"), indexLayout({
             title: this.lsbuilderConfig.title,
+            sidebar: this.generateSidebar(sections),
             content: sectionHTML,
         }));
 
@@ -102,5 +103,22 @@ export class LSBuilder {
 
             this.generateSectionHTML(section.subsections, contentOutput);
         }
+    }
+
+    /**
+     * @param {Section[]} sections
+     */
+    generateSidebar(sections) {
+        const output = [];
+        this.generateSidebarTo(output, sections);
+        return output.join("\n");
+    }
+
+    /**
+     * @param {string[]} output
+     * @param {Section[]} sections
+     */
+    generateSidebarTo(output, sections) {
+        //
     }
 }

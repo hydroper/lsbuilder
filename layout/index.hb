@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<div id="menubar">
+    <div class="left">
+        <button id="toggleSidebar">☰</button>
+        <div class="title">{{title}}</div>
+    </div>
+    <div class="right"></div>
+</div>
+<div id="sidebar">
+{{sidebar}}
+</div>
 <div id="content">
 {{{content}}}
 </div>
