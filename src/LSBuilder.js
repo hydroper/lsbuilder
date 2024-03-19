@@ -46,10 +46,15 @@ export class LSBuilder {
         // Load layout
         const indexLayout = Handlebars.compile(fs.readFileSync(path.resolve(thisScriptDirectory, "../layout/index.hb"), "utf8"));
 
+        // Generate index.html
         fs.writeFileSync(path.resolve(this.lsbuilderConfig.output, "index.html"), indexLayout({
             title: this.lsbuilderConfig.title,
             content: sectionHTML,
         }));
+
+        // Copy theme files
+        this.copyThemeFonts();
+        this.copyThemeCSS();
     }
 
     copyAssets() {
@@ -60,6 +65,26 @@ export class LSBuilder {
         }
         for (const assetPath of assetPaths1) {
             fs.copyFileSync(assetPath, path.resolve(this.lsbuilderConfig.output, path.basename(assetPath)));
+        }
+    }
+
+    copyThemeFonts() {
+        fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, "theme/fonts"), { recursive: true });
+        const themeFiles = [];
+        const m = globSync(path.resolve(thisScriptDirectory, "theme/fonts/*"));
+        themeFiles.push.apply(themeFiles, m);
+        for (const themeFile of themeFiles) {
+            fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, "theme/fonts", path.basename(themeFile)));
+        }
+    }
+
+    copyThemeCSS() {
+        fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, "theme/css"), { recursive: true });
+        const themeFiles = [];
+        const m = globSync(path.resolve(thisScriptDirectory, "theme/css/*"));
+        themeFiles.push.apply(themeFiles, m);
+        for (const themeFile of themeFiles) {
+            fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, "theme/css", path.basename(themeFile)));
         }
     }
 
