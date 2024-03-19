@@ -1,0 +1,106 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: var(--page-background);
+    color: var(--foreground);
+    font-family: var(--common-font);
+    font-size: 0.8rem;
+}
+
+pre, code {
+    font-family: var(--mono-font) !important;
+    font-size: var(--code-font-size);
+}
+
+h1, h2, h3 {
+    letter-spacing: 0.12rem;
+}
+
+h1 {
+    border-bottom: 1px solid var(--header-1);
+}
+
+h1, h1 a {
+    color: var(--header-1) !important;
+}
+
+h2, h2 a {
+    color: var(--header-2) !important;
+}
+
+h3, h3 a {
+    color: var(--header-3) !important;
+}
+
+/* Don't change font size in headers. */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+    font-size: unset;
+}
+
+p {
+    margin: 0.7rem 0;
+}
+
+h1 {
+    font-size: 1.55rem;
+    margin: 0.7rem 0;
+    padding: 0;
+    padding-bottom: 0.15rem;
+}
+
+h2 {
+    font-size: 1.45rem;
+    padding: 0;
+    margin: 0.08rem 0;
+}
+
+h3 {
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 0.08rem 0;
+}
+
+h1 .sec-title-number {
+    display: inline-block;
+    min-width: 3.5rem;
+}
+
+h2 .sec-title-number {
+    display: inline-block;
+    min-width: 3.8rem;
+}
+
+h3 .sec-title-number {
+    display: inline-block;
+    min-width: 4.2rem;
+}
+
+table {
+    margin: 1rem 0;
+    border-collapse: collapse;
+    border: 1px solid var(--table-border-color);
+}
+table th {
+    text-align: left;
+}
+table th, td {
+    padding: 5px 7px;
+    border: 1px solid var(--table-border-color);
+}
+table thead td {
+    font-weight: 700;
+}
+table thead tr,
+table td[colspan="2"] {
+    background: var(--table-header-background);
+    color: var(--table-header-foreground);
+}
+table tbody tr:nth-child(even) {
+    background: var(--background);
+}
+table tbody tr:nth-child(odd) {
+    background: var(--background);
+}

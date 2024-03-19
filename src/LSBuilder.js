@@ -53,8 +53,8 @@ export class LSBuilder {
         }));
 
         // Copy theme files
-        this.copyThemeFonts();
-        this.copyThemeCSS();
+        this.copyThemeFiles("fonts");
+        this.copyThemeFiles("css");
     }
 
     copyAssets() {
@@ -68,23 +68,21 @@ export class LSBuilder {
         }
     }
 
-    copyThemeFonts() {
-        fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, "fonts"), { recursive: true });
-        const themeFiles = [];
-        const m = globSync(path.resolve(thisScriptDirectory, "../theme/fonts/*"));
-        themeFiles.push.apply(themeFiles, m);
-        for (const themeFile of themeFiles) {
-            fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, "fonts", path.basename(themeFile)));
-        }
-    }
+    copyThemeFiles(directory) {
+        fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, directory), { recursive: true });
 
-    copyThemeCSS() {
-        fs.mkdirSync(path.resolve(this.lsbuilderConfig.output, "css"), { recursive: true });
-        const themeFiles = [];
-        const m = globSync(path.resolve(thisScriptDirectory, "../theme/css/*"));
-        themeFiles.push.apply(themeFiles, m);
+        const fullThemeDirectory = path.resolve(thisScriptDirectory, "../theme", directory);
+        const themeFiles = fs.readdirSync(fullThemeDirectory);
+
+        for (let i = 0; i < themeFiles.length; ++i) {
+            themeFiles[i] = path.resolve(fullThemeDirectory, themeFiles[i]);
+            if (!fs.lstatSync(themeFiles[i]).isFile()) {
+                themeFiles.splice(i, 1);
+                i--;
+            }
+        }
         for (const themeFile of themeFiles) {
-            fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, "css", path.basename(themeFile)));
+            fs.copyFileSync(themeFile, path.resolve(this.lsbuilderConfig.output, directory, path.basename(themeFile)));
         }
     }
 
@@ -97,7 +95,7 @@ export class LSBuilder {
             // No Math.clamp() here, so using ternary.
             const headingTagName = section.number.values.length == 1 ? "h1" : section.number.values.length == 2 ? "h2" : "h3";
             const idAttribute = section.label == null ? "" : " id=\"" + section.label.replace(/"/g, "")  + "\"";
-            const headingTitle = "<" + headingTagName + idAttribute + ">" + section.number.toString() + " " + section.title + "</" + headingTagName + ">";
+            const headingTitle = "<" + headingTagName + idAttribute + "><span class=\"sec-title-number\">" + section.number.toString() + "</span> " + section.title + "</" + headingTagName + ">";
 
             contentOutput.push("<div class=\"section-title\" href=\"" + section.slug + "\">" + headingTitle + "</div>");
             contentOutput.push(section.content);

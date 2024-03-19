@@ -1,0 +1,19 @@
+/* Globals */
+
+:root {
+    --mono-font: Courier New, monospace;
+    --code-font-size: 1.03em;
+    --common-font: Arial MT, Arial, serif;
+
+    --background: #fff;
+    --page-background: #fff;
+    --foreground: #000;
+
+    --header-1: #8e8e8e;
+    --header-2: #555555;
+    --header-3: var(--header-2);
+
+    --table-border-color: #000;
+    --table-header-background: #222;
+    --table-header-foreground: #fff;
+}
