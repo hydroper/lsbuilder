@@ -1,19 +1,23 @@
 /* Globals */
 
 :root {
-    --mono-font: Courier New, monospace;
-    --code-font-size: 1.03em;
     --common-font: Arial MT, Arial, serif;
+    --common-font-size: 0.8rem;
+    --code-font: Courier New, monospace;
+    --code-font-size: 1.0rem;
 
-    --background: #fff;
     --page-background: #fff;
+    --background: #fff;
     --foreground: #000;
+
+    --code-block-background: #c0c0c0;
+    --code-block-foreground: #111;
 
     --header-1: #8e8e8e;
     --header-2: #555555;
     --header-3: var(--header-2);
 
-    --table-border-color: #000;
+    --table-border: #000;
     --table-header-background: #222;
     --table-header-foreground: #fff;
 }
