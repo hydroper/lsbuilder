@@ -123,3 +123,7 @@ ol li:before {
     position: absolute;
     left: -0.3rem;
 }
+
+#content {
+    padding: 1rem;
+}
