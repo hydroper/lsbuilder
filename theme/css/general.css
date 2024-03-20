@@ -262,7 +262,7 @@ html[data-sidebar="true"] #sidebar {
 
 #sidebar .sec-top {
     font-weight: bold;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 0;
     color: var(--header-2);
 }
 
