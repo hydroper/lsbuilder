@@ -293,6 +293,8 @@ html[data-sidebar="true"] #sidebar {
     position: fixed;
     top: calc(var(--menubar-height) + 1rem);
     bottom: 0;
+    left: 0;
+    right: 0;
     max-width: 80rem;
     padding: 1rem;
     overflow-x: hidden;
@@ -303,10 +305,20 @@ html[data-sidebar="true"] #content {
     left: var(--sidebar-width);
 }
 
+#content img, #content video {
+    max-width: 100%;
+}
+
 #homeContent {
     margin: 3rem 0;
 }
 
 #homeContent p {
     margin: 2rem 0;
+}
+
+#content main {
+    margin: 0 auto;
+    max-width: var(--content-max-width);
+    overflow-wrap: break-word;
 }

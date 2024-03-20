@@ -17,16 +17,16 @@
     <div class="right"></div>
 </div>
 </header>
-<main>
 <div id="sidebar">
 {{{sidebar}}}
 </div>
 <div id="content">
+<main>
 <div id="homeContent">
 {{{homeContent}}}
 </div>
 {{{content}}}
-</div>
 </main>
+</div>
 </body>
 </html>

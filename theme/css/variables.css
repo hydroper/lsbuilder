@@ -2,6 +2,7 @@
 
 :root {
     --menubar-height: 38px;
+    --content-max-width: 750px;
 
     --common-font: Arial, serif;
     --common-font-size: 0.87rem;
