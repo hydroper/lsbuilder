@@ -4,6 +4,7 @@ import path from "path";
 import url from "url";
 import { globSync } from "glob";
 import { LSBuilderConfiguration } from "./LSBuilderConfiguration.js";
+import { HomeFile } from "./HomeFile.js";
 import { Section } from "./Section.js";
 import { SectionFile } from "./SectionFile.js";
 import { SectionNumber } from "./SectionNumber.js";
@@ -33,6 +34,9 @@ export class LSBuilder {
         // Copy assets
         this.copyAssets();
 
+        // Process home
+        const homeFile = new HomeFile(this.lsbuilderConfig.homeFile);
+
         // Process sections
         const sectionFiles = SectionFile.parseList(this.lsbuilderConfig.sectionFiles);
         const sections = Section.processList(sectionFiles, new SectionNumber([0]));
@@ -46,6 +50,7 @@ export class LSBuilder {
         fs.writeFileSync(path.resolve(this.lsbuilderConfig.output, "index.html"), indexLayout({
             title: this.lsbuilderConfig.title,
             sidebar: this.generateSidebar(sections),
+            homeContent: homeFile.html,
             content: sectionContent,
         }));
 

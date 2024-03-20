@@ -15,9 +15,11 @@
     --code-block-background: #c0c0c0;
     --code-block-foreground: #111;
 
+    --heading-letter-spacing: 0.12rem;
     --header-1: #8e8e8e;
     --header-2: #555555;
     --header-3: var(--header-2);
+    --home-heading: #ff6500;
 
     --table-border: #000;
     /*

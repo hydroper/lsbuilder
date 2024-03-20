@@ -22,6 +22,9 @@
 {{{sidebar}}}
 </div>
 <div id="content">
+<div id="homeContent">
+{{{homeContent}}}
+</div>
 {{{content}}}
 </div>
 </main>

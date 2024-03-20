@@ -6,6 +6,7 @@
         "assets/*/**.jpg",
         "assets/*/**.svg"
     ],
+    "homeFile": "src/home.md",
     "sectionFiles": [
         {
             "path": "src/test.md",

@@ -41,7 +41,7 @@ pre, code {
 }
 
 h1, h2, h3 {
-    letter-spacing: 0.12rem;
+    letter-spacing: var(--heading-letter-spacing);
 }
 
 h1 {
@@ -143,6 +143,35 @@ ol li:before {
     left: -0.3rem;
 }
 
+.home-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin: 4rem 0;
+}
+
+.home-title-1 {
+    color: var(--header-3);
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 2.5rem 0;
+    margin-right: 1rem;
+    width: 100%;
+    min-width: 24rem;
+    max-width: 38rem;
+    border-top: 2px solid var(--header-3);
+    border-bottom: 2px solid var(--header-3);
+}
+
+.home-heading {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: var(--heading-letter-spacing);
+    color: var(--home-heading);
+    text-align: center;
+}
+
 /* Menu bar */
 
 #menubar {
@@ -218,6 +247,8 @@ html[data-sidebar="true"] #sidebar {
     align-items: center;
     font-size: 1.1rem;
     margin-left: 1rem;
+    color: var(--header-1);
+    letter-spacing: var(--heading-letter-spacing);
 }
 
 #sidebar a {
@@ -228,6 +259,7 @@ html[data-sidebar="true"] #sidebar {
 #sidebar .sec-top {
     font-weight: bold;
     padding-bottom: 0.5rem;
+    color: var(--header-2);
 }
 
 #sidebar .sec-num {
@@ -265,4 +297,8 @@ html[data-sidebar="true"] #sidebar {
 
 html[data-sidebar="true"] #content {
     left: var(--sidebar-width);
+}
+
+#homeContent {
+    margin: 3rem 0;
 }
