@@ -302,3 +302,7 @@ html[data-sidebar="true"] #content {
 #homeContent {
     margin: 3rem 0;
 }
+
+#homeContent p {
+    margin: 2rem 0;
+}
