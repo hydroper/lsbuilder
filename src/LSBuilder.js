@@ -65,12 +65,7 @@ export class LSBuilder {
     }
 
     copyAssets() {
-        const assetPaths1 = [];
-        for (const assetPattern of this.lsbuilderConfig.assetFiles) {
-            const m = globSync(path.resolve(process.cwd(), assetPattern));
-            assetPaths1.push.apply(assetPaths1, m);
-        }
-        for (const assetPath of assetPaths1) {
+        for (const assetPath of this.lsbuilderConfig.assetFiles) {
             fs.copyFileSync(assetPath, path.resolve(this.lsbuilderConfig.output, path.basename(assetPath)));
         }
     }

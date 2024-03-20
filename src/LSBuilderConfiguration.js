@@ -14,7 +14,7 @@ export class LSBuilderConfiguration {
     output;
 
     /**
-     * File patterns to include in the output directory.
+     * Files to include in the output directory.
      */
     assetFiles;
 

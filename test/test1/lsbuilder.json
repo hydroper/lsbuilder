@@ -1,11 +1,7 @@
 {
     "title": "Test 1",
     "output": "doc",
-    "assetFiles": [
-        "assets/*/**.png",
-        "assets/*/**.jpg",
-        "assets/*/**.svg"
-    ],
+    "assetFiles": [],
     "homeFile": "src/home.md",
     "sectionFiles": [
         {
