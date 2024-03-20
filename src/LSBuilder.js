@@ -2,7 +2,6 @@ import { program } from "commander";
 import fs from "fs";
 import path from "path";
 import url from "url";
-import { globSync } from "glob";
 import { LSBuilderConfiguration } from "./LSBuilderConfiguration.js";
 import { HomeFile } from "./HomeFile.js";
 import { Section } from "./Section.js";
