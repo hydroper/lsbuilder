@@ -9,7 +9,7 @@ html {
     color: var(--foreground);
     font-family: var(--common-font);
     font-size: var(--common-font-size);
-    letter-spacing: 0.025rem;
+    letter-spacing: 0.3px;
 }
 
 button, button:hover, button:active {
