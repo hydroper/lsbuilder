@@ -219,6 +219,8 @@ html[data-sidebar="true"] #menubar {
     padding: 1rem 0;
     display: none;
     width: var(--sidebar-width);
+    overflow-x: none;
+    overflow-y: scroll;
 }
 
 html[data-sidebar="true"] #sidebar {
