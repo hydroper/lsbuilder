@@ -26,6 +26,10 @@
     */
     --table-header-background: #c0c0c0;
     --table-header-foreground: #050505;
+
+    --sidebar-toggle-border: #333;
+    --sidebar-toggle-background: #e2e2e2;
+    --sidebar-toggle-foreground: #000;
 }
 
 /* Portrait */

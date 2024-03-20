@@ -170,7 +170,12 @@ html[data-sidebar="true"] #menubar {
 }
 
 #menubar #toggleSidebar {
+    padding: 0.1rem 1rem;
     font-size: 1.5rem;
+}
+
+#menubar #toggleSidebar:hover {
+    opacity: 0.5;
 }
 
 #menubar .title {
@@ -181,7 +186,8 @@ html[data-sidebar="true"] #menubar {
 
 #sidebar {
     position: fixed;
-    display: hidden;
+    padding: 1rem 0;
+    display: none;
     width: var(--sidebar-width);
 }
 
@@ -190,6 +196,59 @@ html[data-sidebar="true"] #sidebar {
     left: 0;
     top: 0;
     bottom: 0;
+}
+
+#sidebar .subsections {
+    display: none;
+}
+
+#sidebar .subsections[data-expand="true"] {
+    display: flex;
+}
+
+#sidebar, #sidebar .subsections {
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+#sidebar .sec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-left: 1rem;
+}
+
+#sidebar a {
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+#sidebar .sec-top {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
+
+#sidebar .sec-num {
+    margin-right: 2rem;
+}
+
+#sidebar .subsections {
+    margin-left: 1rem;
+}
+
+#sidebar .toggle {
+    color: var(--sidebar-toggle-foreground);
+    background: var(--sidebar-toggle-background);
+    border: 1px solid var(--sidebar-toggle-border);
+    padding: 2px 5px;
+    margin: 0 4px;
+    font-size: 0.8rem;
+}
+
+#sidebar .toggle:hover {
+    opacity: 0.7;
 }
 
 /* Content */

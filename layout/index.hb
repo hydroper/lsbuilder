@@ -19,7 +19,7 @@
 </header>
 <main>
 <div id="sidebar">
-{{sidebar}}
+{{{sidebar}}}
 </div>
 <div id="content">
 {{{content}}}

@@ -36,12 +36,7 @@ export class LSBuilder {
         // Process sections
         const sectionFiles = SectionFile.parseList(this.lsbuilderConfig.sectionFiles);
         const sections = Section.processList(sectionFiles, new SectionNumber([0]));
-        /**
-         * @type {string[]}
-         */
-        const sectionHTML1 = [];
-        this.generateSectionHTML(sections, sectionHTML1);
-        const sectionHTML = sectionHTML1.join("");
+        const sectionContent = this.generateSection(sections);
 
         // Load layout
         const indexLayout = Handlebars.compile(fs.readFileSync(path.resolve(thisScriptDirectory, "../layout/index.hb"), "utf8"));
@@ -51,7 +46,7 @@ export class LSBuilder {
         fs.writeFileSync(path.resolve(this.lsbuilderConfig.output, "index.html"), indexLayout({
             title: this.lsbuilderConfig.title,
             sidebar: this.generateSidebar(sections),
-            content: sectionHTML,
+            content: sectionContent,
         }));
 
         // Generate script.js
@@ -94,20 +89,29 @@ export class LSBuilder {
     }
 
     /**
-     * @param {Section[]} sections 
-     * @param {string[]} contentOutput
+     * @param {Section[]} sections
      */
-    generateSectionHTML(sections, contentOutput) {
+    generateSection(sections) {
+        const output = [];
+        this.generateSectionTo(output, sections);
+        return output.join("");
+    }
+
+    /**
+     * @param {string[]} contentOutput
+     * @param {Section[]} sections 
+     */
+    generateSectionTo(contentOutput, sections) {
         for (const section of sections) {
             // No Math.clamp() here, so using ternary.
             const headingTagName = section.number.values.length == 1 ? "h1" : section.number.values.length == 2 ? "h2" : "h3";
             const idAttribute = section.label == null ? "" : " id=\"" + section.label.replace(/"/g, "")  + "\"";
-            const headingTitle = "<" + headingTagName + idAttribute + "><span class=\"sec-title-number\">" + section.number.toString() + "</span> " + section.title + "</" + headingTagName + ">";
+            const headingTitle = "<" + headingTagName + idAttribute + "><span class=\"sec-title-number\" id=\"" + section.slug + "\">" + section.number.toString() + "</span> " + section.title + "</" + headingTagName + ">";
 
             contentOutput.push("<div class=\"section-title\" href=\"" + section.slug + "\">" + headingTitle + "</div>");
             contentOutput.push(section.content);
 
-            this.generateSectionHTML(section.subsections, contentOutput);
+            this.generateSectionTo(contentOutput, section.subsections);
         }
     }
 
@@ -125,6 +129,15 @@ export class LSBuilder {
      * @param {Section[]} sections
      */
     generateSidebarTo(output, sections) {
-        //
+        for (const section of sections) {
+            const toggle = section.subsections.length != 0 ? "<button class=\"toggle\">+</button>" : "";
+            const secTopClass = section.number.values.length == 1 ? " sec-top" : "";
+            output.push("<div class=\"sec" + secTopClass + "\"><a href=\"#" + section.slug + "\"><span class=\"sec-num\">" + section.number.toString() + "</span><span>" + section.title + "</span></a> " + toggle + "</div>");
+            if (section.subsections.length != 0) {
+                output.push("<div class=\"subsections\">");
+                this.generateSidebarTo(output, section.subsections);
+                output.push("</div>");
+            }
+        }
     }
 }
