@@ -218,6 +218,7 @@ html[data-sidebar="true"] #menubar {
 }
 
 #menubar #toggleDark {
+    padding: 0.8rem 0;
     text-transform: uppercase;
 }
 
