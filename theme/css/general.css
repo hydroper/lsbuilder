@@ -227,6 +227,7 @@ html[data-sidebar="true"] #menubar {
     width: var(--sidebar-width);
     overflow-x: none;
     overflow-y: scroll;
+    word-break: break-word;
 }
 
 html[data-sidebar="true"] #sidebar {
