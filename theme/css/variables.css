@@ -23,10 +23,6 @@
     --home-heading: #ff6500;
 
     --table-border: #000;
-    /*
-    --table-header-background: #222;
-    --table-header-foreground: #fff;
-    */
     --table-header-background: #c0c0c0;
     --table-header-foreground: #050505;
 
@@ -35,6 +31,31 @@
     --sidebar-toggle-foreground: #000;
 
     --links: #575757;
+}
+
+html[data-dark="true"] {
+    --page-background: #181818;
+    --background: #181818;
+    --foreground: #fff;
+
+    --code-block-background: #323232;
+    --code-block-foreground: #eee;
+
+    --heading-letter-spacing: 0.12rem;
+    --header-1: #747474;
+    --header-2: #a0a0a0;
+    --header-3: var(--header-2);
+    --home-heading: #ff6500;
+
+    --table-border: #777;
+    --table-header-background: #c0c0c0;
+    --table-header-foreground: #050505;
+
+    --sidebar-toggle-border: #eee;
+    --sidebar-toggle-background: #222;
+    --sidebar-toggle-foreground: #fff;
+
+    --links: #848484;
 }
 
 /* Portrait */

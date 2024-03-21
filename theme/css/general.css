@@ -217,7 +217,12 @@ html[data-sidebar="true"] #menubar {
     font-size: 1.5rem;
 }
 
-#menubar #toggleSidebar:hover {
+#menubar #toggleDark {
+    text-transform: uppercase;
+}
+
+#menubar #toggleSidebar:hover,
+#menubar #toggleDark:hover {
     opacity: 0.5;
 }
 

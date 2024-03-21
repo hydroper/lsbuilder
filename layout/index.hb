@@ -12,6 +12,7 @@
 <div id="menubar">
     <div class="left">
         <button id="toggleSidebar">☰</button>
+        <button id="toggleDark">[Light]</button>
         <div class="title">{{title}}</div>
     </div>
     <div class="right"></div>

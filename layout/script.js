@@ -1,9 +1,26 @@
 (() => {
-    const toggleSidebarButton = document.querySelector("#menubar #toggleSidebar");
+    initializeDarkMode();
 
+    function initializeDarkMode() {
+        document.querySelector("html").setAttribute("data-dark", localStorage.getItem("dark") == "true");
+    }
+
+    // Toggle sidebar
+
+    const toggleSidebarButton = document.querySelector("#menubar #toggleSidebar");
     toggleSidebarButton.addEventListener("click", _e => {
         const htmlElement = document.querySelector("html");
         htmlElement.setAttribute("data-sidebar", (!(htmlElement.getAttribute("data-sidebar") == "true")).toString());
+    });
+
+    // Toggle dark mode
+
+    const toggleDarkButton = document.querySelector("#menubar #toggleDark");
+    toggleDarkButton.addEventListener("click", _e => {
+        const htmlElement = document.querySelector("html");
+        const dark = !(htmlElement.getAttribute("data-dark") == "true");
+        localStorage.setItem("dark", dark.toString());
+        htmlElement.setAttribute("data-dark", dark.toString());
     });
 
     // Click section title
