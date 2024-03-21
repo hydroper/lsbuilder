@@ -115,6 +115,19 @@ export class Section {
                 } else {
                     domContent = domChildren.slice(headingTitleParentIndex + 1);
                 }
+
+                // Remove <sectionLabel>...</sectionLabel> from content
+                for (let i = 0; i < domContent.length; ++i) {
+                    const node = domContent[i];
+                    if (DomUtils.getName(node) == "p") {
+                        const e = DomUtils.getChildren(node);
+                        if (e.length != 0 && DomUtils.getName(e[0]) == "sectionlabel") {
+                            domContent.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+
                 const content = serializeDOM(domContent);
 
                 // Determine section number
