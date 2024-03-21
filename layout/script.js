@@ -6,6 +6,21 @@
         htmlElement.setAttribute("data-sidebar", (!(htmlElement.getAttribute("data-sidebar") == "true")).toString());
     });
 
+    // Click section title
+
+    for (const title of document.querySelectorAll("#content .section-title")) {
+        initializeSectionTitle(title);
+    }
+
+    /**
+     * @param {HTMLDivElement} title
+     */
+    function initializeSectionTitle(title) {
+        title.addEventListener("click", _e => {
+            location.href = "#" + title.querySelector(".sec-title-number").id;
+        });
+    }
+
     // Click sidebar anchor
 
     for (const anchor of document.querySelectorAll("#sidebar a")) {

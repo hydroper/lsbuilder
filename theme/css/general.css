@@ -178,6 +178,10 @@ ol li:before {
     text-align: center;
 }
 
+.section-title {
+    cursor: pointer;
+}
+
 /* Menu bar */
 
 #menubar {

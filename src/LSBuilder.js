@@ -107,7 +107,7 @@ export class LSBuilder {
             const idAttribute = section.label == null ? "" : " id=\"" + section.label.replace(/"/g, "")  + "\"";
             const headingTitle = "<" + headingTagName + idAttribute + "><span class=\"sec-title-number\" id=\"" + section.slug + "\">" + section.number.toString() + "</span> " + section.title + "</" + headingTagName + ">";
 
-            contentOutput.push("<div class=\"section-title\" href=\"" + section.slug + "\">" + headingTitle + "</div>");
+            contentOutput.push("<div class=\"section-title\">" + headingTitle + "</div>");
             contentOutput.push(section.content);
 
             this.generateSectionTo(contentOutput, section.subsections);
