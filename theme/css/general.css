@@ -324,7 +324,7 @@ html[data-sidebar="true"] #content {
 }
 
 #content main {
-    margin: 0 auto;
+    margin-left: auto;
     max-width: var(--content-max-width);
     overflow-wrap: break-word;
 }
