@@ -139,6 +139,10 @@ table tbody tr:nth-child(odd) {
     background: var(--background);
 }
 
+ul li, ol li {
+    margin: 0.4rem 0;
+}
+
 ol li {
     position: relaive;
     padding-left: 0.5rem;
