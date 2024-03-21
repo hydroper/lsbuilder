@@ -30,6 +30,10 @@ button:focus {
     outline: none;
 }
 
+a, a:visited {
+    color: var(--links);
+}
+
 pre {
     background: var(--code-block-background);
     color: var(--code-block-foreground);
