@@ -6,6 +6,23 @@
         htmlElement.setAttribute("data-sidebar", (!(htmlElement.getAttribute("data-sidebar") == "true")).toString());
     });
 
+    // Click sidebar anchor
+
+    for (const anchor of document.querySelectorAll("#sidebar a")) {
+        initializeSidebarAnchor(anchor);
+    }
+    /**
+     * @param {HTMLAnchorElement} anchor 
+     */
+    function initializeSidebarAnchor(anchor) {
+        anchor.addEventListener("click", _e => {
+            const se = anchor.parentElement.nextElementSibling;
+            if (se != null && Array.from(se.classList.values()).includes("subsections")) {
+                se.setAttribute("data-expand", "true");
+            }
+        });
+    }
+
     // Toggle subsection
 
     for (const button of document.querySelectorAll("#sidebar .toggle")) {
