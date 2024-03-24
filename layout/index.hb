@@ -18,9 +18,6 @@
     <div class="right"></div>
 </div>
 </header>
-<div id="sidebar">
-{{{sidebar}}}
-</div>
 <div id="content">
 <main>
 <div id="homeContent">
@@ -28,6 +25,9 @@
 </div>
 {{{content}}}
 </main>
+</div>
+<div id="sidebar">
+{{{sidebar}}}
 </div>
 </body>
 </html>
