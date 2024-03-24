@@ -323,7 +323,7 @@ html[data-sidebar="true"] #sidebar {
     overflow-y: scroll;
 }
 
-/* Landscape */
+/* Content > Landscape */
 
 @media (min-width: 961px) {
     html[data-sidebar="true"] #content {
